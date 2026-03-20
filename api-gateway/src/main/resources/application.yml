@@ -6,11 +6,34 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins:
+              - "http://localhost:5173"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
+              - OPTIONS
+            allowed-headers:
+              - "*"
+            allow-credentials: true
       routes:
         - id: user-service-route
           uri: lb://USER-SERVICE
           predicates:
             - Path=/api/users/**
+        - id: auth-route
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/auth/**
+        - id: item-service-route
+          uri: lb://ITEM-SERVICE
+          predicates:
+            - Path=/api/items/**
 
 eureka:
   client:
