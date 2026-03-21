@@ -34,6 +34,10 @@ spring:
           uri: lb://ITEM-SERVICE
           predicates:
             - Path=/api/items/**
+        - id: cliam-service-route
+          uri: lb://CLAIM-SERVICE
+          predicates:
+            - Path=/api/claims/**
 
 eureka:
   client:
