@@ -11,6 +11,7 @@ spring:
           '[/**]':
             allowed-origins:
               - "http://localhost:5173"
+              - "http://34.47.225.165"
             allowed-methods:
               - GET
               - POST
@@ -34,7 +35,7 @@ spring:
           uri: lb://ITEM-SERVICE
           predicates:
             - Path=/api/items/**
-        - id: cliam-service-route
+        - id: claim-service-route
           uri: lb://CLAIM-SERVICE
           predicates:
             - Path=/api/claims/**
@@ -42,9 +43,9 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://34.47.225.165:8761/eureka/
     fetch-registry: true
     register-with-eureka: true
   instance:
-    hostname: localhost
-    prefer-ip-address: false
+    hostname: 34.47.225.165
+    prefer-ip-address: true
