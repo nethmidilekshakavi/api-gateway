@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: api-gateway
+
   cloud:
     gateway:
       globalcors:
@@ -22,19 +23,23 @@ spring:
             allowed-headers:
               - "*"
             allow-credentials: true
+
       routes:
         - id: user-service-route
           uri: lb://USER-SERVICE
           predicates:
             - Path=/api/users/**
+
         - id: auth-route
           uri: lb://USER-SERVICE
           predicates:
             - Path=/auth/**
+
         - id: item-service-route
           uri: lb://ITEM-SERVICE
           predicates:
             - Path=/api/items/**
+
         - id: claim-service-route
           uri: lb://CLAIM-SERVICE
           predicates:
@@ -46,6 +51,6 @@ eureka:
       defaultZone: http://34.47.225.165:8761/eureka/
     fetch-registry: true
     register-with-eureka: true
+
   instance:
-    hostname: 34.47.225.165
     prefer-ip-address: true
