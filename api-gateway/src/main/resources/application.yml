@@ -54,4 +54,5 @@ eureka:
 
   instance:
     prefer-ip-address: true
-    ip-address: 10.128.0.6
+    ip-address: 34.47.225.165
+
