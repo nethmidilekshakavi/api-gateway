@@ -48,9 +48,10 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://10.160.0.3:8761/eureka/
+      defaultZone: http://34.47.225.165:8761/eureka/
     fetch-registry: true
     register-with-eureka: true
 
   instance:
     prefer-ip-address: true
+    ip-address: 10.128.0.6
